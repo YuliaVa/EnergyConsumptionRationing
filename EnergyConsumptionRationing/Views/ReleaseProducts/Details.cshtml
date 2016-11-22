@@ -1,0 +1,32 @@
+﻿@model EnergyConsumptionRationing.Models.ReleaseProducts
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Детали</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>Название организации</dt>
+        <dd>@Html.DisplayFor(model => model.Organization.OrganizationName)</dd>
+
+        <dt>Наименование продукции</dt>
+        <dd>@Html.DisplayFor(model => model.TypesProduction.ProductionName)</dd>
+
+        <dt>Всего произведено</dt>
+        <dd>@Html.DisplayFor(model => model.TotalRelease)</dd>
+
+        <dt>Год</dt>
+        <dd>@Html.DisplayFor(model => model.Year)</dd>
+
+        <dt>Квартал</dt>
+        <dd>@Html.DisplayFor(model => model.Quarter)</dd>
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Редактировать запись", "Edit", new { id = Model.ReleaseID }) |
+    @Html.ActionLink("Вернуться к списку", "Index")
+</p>

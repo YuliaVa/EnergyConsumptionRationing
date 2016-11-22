@@ -1,0 +1,49 @@
+﻿@model PagedList.IPagedList<EnergyConsumptionRationing.Models.TypesProduction>
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css"/>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link href="@Url.Content("/Content/PagedList.css")" rel="stylesheet" type="text/css" />
+
+<h2>Виды продукции</h2>
+
+@using (Html.BeginForm("Index", "TypesProductions", FormMethod.Get))
+{
+    <fieldset>
+        <h3 style="font-size:14px">Поиск по наименованию продукции:</h3>&nbsp;@Html.TextBox("Search", "")
+        <input type="submit" value="Поиск"/>
+    </fieldset>
+}
+<br/>
+
+<p style="color:black">
+    @Html.ActionLink("Добавить запись", "Create")
+</p>
+<table class="table-bordered" cellpadding="5" width="100%" align="center" style="font-size:14px;">
+    <tr>
+        <th> Код </th>
+        <th> Название продукции </th>
+        <th> Единица измерения </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td><p>@Html.DisplayFor(modelItem => item.ProductionID)</p></td>
+        <td><p>@Html.DisplayFor(modelItem => item.ProductionName)</p></td>
+        <td><p>@Html.DisplayFor(modelItem => item.MeasureUnit)</p></td>
+        <td>
+            @Html.ActionLink("Редактировать", "Edit", new { id = item.ProductionID }) |
+            @Html.ActionLink("Детали", "Details", new { id = item.ProductionID }) |
+            @Html.ActionLink("Удалить", "Delete", new { id = item.ProductionID })
+        </td>
+    </tr>
+}
+</table>
+
+<div style="text-align: center;">
+    Страница @(Model.PageCount < Model.PageNumber ? 0:Model.PageNumber) из @Model.PageCount
+    @Html.PagedListPager(Model, page => Url.Action("Index", new { page}))
+</div>

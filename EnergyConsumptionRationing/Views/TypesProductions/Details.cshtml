@@ -1,0 +1,23 @@
+﻿@model EnergyConsumptionRationing.Models.TypesProduction
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Детали</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>Наименование продукции</dt>
+        <dd>@Html.DisplayFor(model => model.ProductionName)</dd>
+
+        <dt>Единица измерения</dt>
+        <dd>@Html.DisplayFor(model => model.MeasureUnit)</dd>
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Редактировать запись", "Edit", new { id = Model.ProductionID }) |
+    @Html.ActionLink("Вернуться к списку", "Index")
+</p>

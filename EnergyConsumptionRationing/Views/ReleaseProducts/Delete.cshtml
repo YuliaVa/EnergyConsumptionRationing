@@ -1,0 +1,37 @@
+﻿@model EnergyConsumptionRationing.Models.ReleaseProducts
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<h3>Вы уверены, что хотите удалить запись?</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>Название организации</dt>
+        <dd>@Html.DisplayFor(model => model.Organization.OrganizationName)</dd>
+
+        <dt>Наименование продукции</dt>
+        <dd>@Html.DisplayFor(model => model.TypesProduction.ProductionName)</dd>
+
+        <dt>Всего произведено</dt>
+        <dd>@Html.DisplayFor(model => model.TotalRelease)</dd>
+
+        <dt>Год</dt>
+        <dd>@Html.DisplayFor(model => model.Year)</dd>
+
+        <dt>Кварал</dt>
+        <dd>@Html.DisplayFor(model => model.Quarter)</dd>
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Удалить" class="btn btn-default" /> |
+            @Html.ActionLink("Вернуться к списку", "Index")
+        </div>
+    }
+</div>

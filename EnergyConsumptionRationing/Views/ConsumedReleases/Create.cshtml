@@ -1,0 +1,66 @@
+﻿@model EnergyConsumptionRationing.Models.ConsumedRelease
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Добавить запись</h2>
+
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <dl class="dl-horizontal">
+            <dt>Название организации</dt>
+            <dd>
+                @Html.DropDownList("OrganizationID", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.OrganizationID, "", new { @class = "text-danger" })
+            </dd>
+
+            <dt>Наименование продукции</dt>
+            <dd>
+                @Html.DropDownList("ProductionID", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.ProductionID, "", new { @class = "text-danger" })
+            </dd>
+
+            <dt>Всего потреблено теплоэнергии(кВт/ч)</dt>
+            <dd>
+                @Html.EditorFor(model => model.TotalConsumption, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.TotalConsumption, "", new { @class = "text-danger" })
+            </dd>
+
+            <dt>Год(с 1800 до 2016)</dt>
+            <dd>
+                @Html.EditorFor(model => model.Year, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Year, "", new { @class = "text-danger" })
+            </dd>
+
+            <dt>Квартал</dt>
+            <dd>
+                @Html.EditorFor(model => model.Quarter, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Quarter, "", new { @class = "text-danger" })
+            </dd>
+        </dl>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Добавить" class="btn btn-default" />
+            </div>
+        </div>
+        
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Вернуться к списку", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

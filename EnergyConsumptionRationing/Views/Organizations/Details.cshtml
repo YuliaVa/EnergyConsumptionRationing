@@ -1,0 +1,38 @@
+﻿@model EnergyConsumptionRationing.Models.Organization
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Детали</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>Название организации</dt>
+        <dd>@Html.DisplayFor(model => model.OrganizationName)</dd>
+
+        <dt>Форма собственности</dt>
+        <dd>@Html.DisplayFor(model => model.FormOwnership)</dd>
+
+        <dt>Адрес</dt>
+        <dd>@Html.DisplayFor(model => model.Address)</dd>
+
+        <dt>Ф.И.О. руководителя</dt>
+        <dd>@Html.DisplayFor(model => model.NameLeader)</dd>
+
+        <dt>Телефон руководителя</dt>
+        <dd>@Html.DisplayFor(model => model.PhoneLeader)</dd>
+
+        <dt>Ф.И.О. главного инженера</dt>
+        <dd>@Html.DisplayFor(model => model.NameEngineer)</dd>
+
+        <dt>Телефон главного инженера</dt>
+        <dd>@Html.DisplayFor(model => model.PhoneEngineer)</dd>
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Редактировать запись", "Edit", new { id = Model.OrganizationID }) |
+    @Html.ActionLink("Вернуться к списку", "Index")
+</p>

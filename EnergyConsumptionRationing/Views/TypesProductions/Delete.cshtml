@@ -1,0 +1,27 @@
+﻿@model EnergyConsumptionRationing.Models.TypesProduction
+
+@{
+    ViewBag.Title = "Удалить";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h3>Вы уверены, что хотите удалить запись?</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>Наименование продукции</dt>
+        <dd>@Html.DisplayFor(model => model.ProductionName)</dd>
+
+        <dt>Единица измерения</dt>
+        <dd>@Html.DisplayFor(model => model.MeasureUnit)</dd>
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Удалить" class="btn btn-default" /> |
+            @Html.ActionLink("Вернуться к списку", "Index")
+        </div>
+    }
+</div>
